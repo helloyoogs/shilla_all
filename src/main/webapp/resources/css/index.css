@@ -1,0 +1,133 @@
+@charset "UTF-8";
+.content_wrap1{
+    width: 1200px;
+    padding: 50px 0 50px 0;
+    margin: 0 auto;
+}
+.content_wrap1::after{
+content: "";
+display: block;
+clear: both;
+}
+.content_wrap1 .table_rs{
+    width:1000px;
+    text-align:center;
+    border-bottom: 1px solid lightgray;
+}
+.content_wrap1 .table_rs tr{
+    height: 30px;
+  }
+
+.table_rs-wrap{
+    float: left;
+}
+
+.btn_sc{
+float: right;
+}
+
+.img_rs img{
+    margin: 50px 0 50px 0;
+}
+.oper_main::after{
+    content: "";
+    display: block;
+    clear: both;
+    }
+.oper_img3::after{
+        content: "";
+        display: block;
+        clear: both;
+}
+.oper_main{
+    position: relative;
+    }
+.oper_main h3{
+    margin: 50px 0 50px 0;
+    text-align: center;
+    }
+.oper_main .oper_img1{
+        float: left;
+        width: 793px;
+ }
+.oper_main .oper_img2{
+    width: 386px;
+    float: right;
+}
+.oper_main .oper_img2 li:first-child{
+    padding-bottom: 20px;
+}
+.oper_main .oper_img3{
+    width: 792px;
+}
+.oper_main .oper_img3 li{
+    padding-top: 20px;
+    float: left;
+}
+.oper_main .oper_img3 li:first-child{
+    padding-right: 20px;
+}
+.oper_main .oper_img4{
+    position: absolute;
+    top: 75px;
+    right: 0;
+}
+.content_wrap2{
+    width: 100%;
+    padding: 50px 0 50px 0;
+    background-color: #f6f6f6;
+    margin-top: 100px;
+}
+.reward_main{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.reward_main h3{
+    text-align: center;
+}
+.reward_main .reward_content1{
+   margin-top: 50px;
+}
+
+.reward_main .reward_content1 ul::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+.reward_main .reward_content1 ul li{
+    float: left;
+    border-left: 1px solid #e4e4e4;
+    margin-left: 36px;
+    padding-left: 40px;
+}
+.reward_main .reward_content1 ul li:first-child{
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+.reward_main .reward_content2{
+    margin-top: 50px;
+ }
+
+ .reward_main .reward_content3{
+    position: absolute;
+    top: 80px;
+    right: 0;
+ }
+ .reward_main .reward_content3 .rw_join{
+    position: absolute;
+    top: 100px;
+    right: -20px;
+ }
+
+ .gallery_main{
+    width: 1200px;
+    padding: 100px 0 100px 0;
+    margin: 0 auto;
+}
+.gallery_main h3{
+ text-align: center;
+ margin-bottom: 50px;
+}

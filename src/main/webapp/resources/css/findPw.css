@@ -1,0 +1,46 @@
+@charset "UTF-8";
+.content_wrap1 h1{
+font-family: 'Nanum Myeongjo', serif;
+font-weight: 800;
+font-size: 25px;
+color: #856f56;
+padding-bottom: 24px;
+}
+.content_wrap1{
+    width: 866px;
+    padding: 50px 0 50px 0;
+    margin: 0 auto;
+}
+.content_wrap1 .log1{
+    width: 500px;
+    margin: 50px auto;
+}
+.content_wrap1 label{
+    width: 125px;
+    color: #2d2f43;
+    font-size: 14px;
+    font-weight: 500;
+    height: 55px;
+    line-height: 55px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.content_wrap1 input{
+height: 30px;
+width: 300px;
+margin-bottom: 10px;
+}
+.content_wrap1 input[type=submit]{
+height: 34px;
+width: 308px;
+cursor: pointer;
+background: #432c10;
+color: #fff;
+border: 0;
+}
+.content_wrap1 .btn_all img{
+	margin-top: 10px;
+ margin-left: 10px;
+cursor: pointer;
+}

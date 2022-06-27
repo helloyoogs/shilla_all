@@ -1,0 +1,221 @@
+@charset "UTF-8";
+.info_wrap{
+    background: url('../img/localBoxBg.gif') repeat;
+    height: 170px;
+}
+.info_main{
+    width: 1200px;
+    margin: 0 auto;
+}
+.info_main::after{
+    clear: both;
+    display: block;
+    content: "";
+    }
+.info_main h3{
+    float: left;
+}
+.info_content1{
+    float: left;
+}
+.info_content1 ul::after{
+   clear: both;
+   display: block;
+   content: "";
+   }
+.info_content1 ul li{
+    float: left;
+   }
+.info_content1 ul li.brand > a{
+ background: url('../img/brandTit.gif') no-repeat;
+ display: inline-block;
+ width: 140px;
+ height: 68px;
+ text-indent: -9999px;
+ overflow: hidden;
+ margin-right: 40px;
+}
+.info_content1 ul li.mono > a{
+    background: url('../img/brandMono.gif') no-repeat;
+    display: inline-block;
+    width: 226px;
+    height: 68px;
+    text-indent: -9999px;
+    overflow: hidden;
+    margin-right: 40px;
+}
+ .info_content1 ul li.stay > a{
+    background: url('../img/brandStay.gif') no-repeat;
+    display: inline-block;
+    width: 150px;
+    height: 68px;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+.info_content2::after{
+    content: "";
+    clear: both;
+    display: block;
+ }
+.info_content2{
+    border-top: 1px solid #e3dec9;
+   float: left;
+}
+.num{
+    margin-top: 20px;
+    float: left;
+    width: 374px;
+    height: 45px;
+background: url('../img/HubContactInfo.gif') no-repeat;
+}
+
+.map{
+    margin-left: 40px;
+    float: left;
+    margin-top: 20px;
+    font-size: 13px;
+}
+.map_img > dl > dd > a{
+    opacity: 0;
+}
+
+.map_img::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+
+
+.map_img .map_float{
+    float: left;
+margin-right: 24px;
+
+}
+
+.map_img .map_margin{
+    margin-top: 17px;
+ 
+}
+.map_img{
+    width: 390px;
+ background: url('../img/HublocalBoxLinkInfo.gif') no-repeat;
+ height: 45px;
+}
+.sns{
+    margin-top: 20px;
+    float: left;
+    margin-left: 40px;
+}
+.sns::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+.sns .sns_title{
+background: url('../img/localBoxSnsNews.gif');
+background-position: -26px -39px;
+width: 28px;
+height: 20px;
+font-size: 0;
+}
+.sns dl dt{
+    font-size: 0;
+}
+.sns .face{
+    float: left;
+        display: block;
+        background: url('../img/localBoxSnsNews.gif');
+        background-position: -25px -61px;
+        width: 28px;
+        height: 24px;
+ }
+.sns .ins{
+    float: left;
+            display: block;
+            background: url('../img/localBoxSnsNews.gif');
+            background-position: -138px -61px;
+            width: 28px;
+            height: 24px;
+ }
+ .sns .wei{
+    float: left;
+            display: block;
+            background: url('../img/localBoxSnsNews.gif');
+            background-position: -82px -61px;
+            width: 28px;
+            height: 24px;
+ }
+
+.footer_main{
+    width: 1200px;
+    background: url('../img/footerBg.gif') repeat;
+    height: 183px;
+    margin: 0 auto;
+}
+.footer_main::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+.footer_content1{
+    float: left;
+padding-top: 23px;
+font-size: 12px;
+}
+
+.content1_img{
+    background: url('../img/footLinkBox.gif') no-repeat;
+    height: 60px;
+}
+.content1_img::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+.content1_img > li{
+float: left;
+margin-right: 25px;
+opacity: 0;
+}
+
+.footer_content2{
+    float: right;
+    padding-top: 18px;
+}
+.content2_img{
+    background: url('../img/footSelectLang.gif') no-repeat;
+    height: 25px;
+    width: 245px;
+}
+.footer_content2 > ul > li{
+    margin-top: 5px;
+display: inline-block;
+font-size: 12px;
+margin-left: 12px;
+}
+.footer_content2 > ul > li > a{
+  opacity: 0;
+}
+.footer_content2 > ul > li:first-child{
+   margin-left: 15px;
+    }
+    .footer_content2 > ul > li:last-child{
+        margin-left: 8px;
+         }
+
+.footer_content3{
+    clear: both;
+    background: url('../img/footCopyright.gif') no-repeat;
+    width: 981px;
+    height: 66px;
+    position: relative;
+}
+
+.footer_content3 > p{
+          font-size: 0;
+         }
+       .footer_content3_p{
+           position: absolute;
+           right: 200px;
+           top: 5px;
+       }

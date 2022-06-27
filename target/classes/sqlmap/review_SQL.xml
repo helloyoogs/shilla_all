@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN " "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="review">
+	<insert id="insert" parameterType="hashMap" useGeneratedKeys="true" keyProperty="review_no">
+	<![CDATA[
+	insert into review (id, review_title, review_content, type, room_rating, date_in)
+	values (#{id}, #{review_title}, #{review_content}, #{type}, #{room_rating}, #{date_in})
+	]]>
+	</insert>
+	
+	<select id="before_review" parameterType="hashMap" resultType="BeforeReviewDto">
+	<![CDATA[
+		select id, type, date_in from reservation join room on room.room_no = reservation.room_no where rsv_idx = #{rsv_idx}
+	]]>
+	</select>
+	
+	<!-- 데이터 하나만 받아올 거임 -->
+	<select id="select_detail" parameterType="hashMap" resultType="ReviewDto">
+		<![CDATA[
+			select * from review where review_no=#{review_no}
+		]]>
+	
+	</select>
+	
+	<update id="update" parameterType="hashMap">
+	<![CDATA[
+	update review set review_title=#{review_title}, review_content=#{review_content}, room_rating=#{room_rating} where review_no=#{review_no}
+	]]>
+	
+	</update>
+	
+	<delete id="delete" parameterType="hashMap">
+	<![CDATA[
+		delete from review where review_no=#{review_no}
+	]]>
+	</delete>
+	
+	<!-- 가장 최근에 발매한 책부터 보여주기 위함. 만약 오래된 책부터 보여주고 싶으면 asc를 적거나 그냥 desc를 지우면 된다.  -->
+	<!-- 왜냐면 order by는 기본적으로 asc가 기본값(asc=오름차순, desc=내림차순) -->
+<!-- 	<select id="select_list" parameterType="hashMap" resultType="hashMap"> -->
+<!-- 		<![CDATA[ -->
+<!-- 			select book_id, title, category, price, insert_date from book order by insert_date desc  -->
+<!-- 		]]>  -->
+<!-- 	</select> -->
+<!-- where 1=1 관습적인 구문. 여러 개의 조건을 이어 붙일 때 쓰고, 그 조건 중 하나를 지우거나 추가할 때 쉽게 하려고 쓰는 구문 -->
+
+
+<!-- if태그조건이 해당이 될수도있고 안 될 수도 있어서, 끝에 where 1=1 붙였다. -->
+<!-- if태그가 들어가는 부분은 CDATA 밖으로 빠짐 -->
+<!-- mybatis의 쿼리문에선 따옴표(')를 안 써서  likie '%keyword%' 이렇게 표현할 수 있는 걸-->
+<!-- CONCAT('%', #{keyword}, '%') 이렇게 표현함 -->
+<!-- select review_no,review_title,review_content,room_rating,date_in from review 
+where 1=1
+SELECT * FROM review where 1=1
+ -->
+ <resultMap id="ReviewMap" type="ReviewDto" autoMapping="true">
+		<result property="reivew_no" column="reivew_no" />
+		<result property="review_title" column="review_title" />
+		<result property="review_content" column="review_content" />
+		
+		<result property="type" column="type" />
+		<result property="room_rating" column="room_rating" />
+		<result property="id" column="id" />
+		<result property="date_in" column="date_in" />
+		<result property="review_date" column="review_date" />
+</resultMap>
+
+<select id="select_list" parameterType="hashMap" resultMap="ReviewMap">
+<![CDATA[
+	SELECT * FROM review where 1=1
+]]>
+<if test="keyword!=null and keyword!=''">
+and (room_rating like CONCAT('%', #{keyword}, '%') or type like CONCAT('%', #{keyword}, '%'))
+</if>
+order by review_date desc
+
+</select>
+
+</mapper>

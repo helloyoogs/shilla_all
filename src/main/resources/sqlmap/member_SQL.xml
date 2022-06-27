@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN " "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="member">
+
+<resultMap id="MemberDto" type="MemberDto" autoMapping="true">
+		<result property="id" column="id" />
+		<result property="pw" column="pw" />
+		<result property="name" column="name" />
+		<result property="age" column="age" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="address" column="address" />
+</resultMap>
+
+	<insert id="insert" parameterType="hashMap"
+		useGeneratedKeys="true" keyProperty="id">
+	<![CDATA[
+		insert into member (id,pw,name,age,email,phone,address) values (#{id},#{pw},#{name},#{age},#{email},#{phone},#{address})
+	]]>
+
+	</insert>
+
+	<!-- 데이터 하나만 받아올 거임 -->
+	<select id="select_detail" parameterType="hashMap"
+	 resultType="MemberDto">
+		<![CDATA[
+			select id,pw,name,age,email,phone,address from member where id=#{id}
+		]]>
+	</select>
+
+	<update id="update" parameterType="hashMap">
+	<![CDATA[
+	update member set name=#{name}, age=#{age},email=#{email},phone=#{phone},address=#{address} where id=#{id}
+	]]>
+
+	</update>
+
+	<delete id="delete" parameterType="hashMap">
+	<![CDATA[
+		delete from member where id=#{id}
+	]]>
+	</delete>
+	
+	<!-- 안 쓰는 기능(나중에 관리자 테이블 생성 시 사용할 수도 있음) -->
+	<select id="select_list" parameterType="hashMap"
+		resultType="MemberDto">
+	<![CDATA[
+	select id,pw,name,age,email,phone,address from member 
+	where 1=1
+	]]>
+		<if test="keyword!=null and keyword!=''">
+			and (name like CONCAT('%', #{keyword}, '%') or age like
+			CONCAT('%', #{keyword}, '%'))
+		</if>
+		order by id desc
+
+	</select>
+	<!-- 희영 추가 -->
+	<!-- 로그인 -->
+	<!-- 데이터 하나만 받아올 거임 -->
+	<!--  동준 수정 -->
+	<select id="select_login" parameterType="hashMap"
+		resultType="int">
+		<![CDATA[
+			select count(*) from member where id=#{id} and pw=#{pw}
+		]]>
+	</select>
+	
+	<!-- 로그아웃 -->
+	<select id="select_logout" parameterType="hashMap"
+		resultType="int">
+		<![CDATA[
+			select count(*) from member where id=#{id} and pw=#{pw}
+		]]>
+	</select>
+	
+	<!-- findId -->
+	<select id="findId" parameterType="hashMap"
+		resultType="MemberDto">
+	<![CDATA[
+	select id,pw,name,age,email,phone,address from member 
+	where 1=1
+	]]>
+	<if test="keyword!=null">
+				and (email like CONCAT(#{keyword}) and pw like
+			CONCAT(#{keyword1}))
+		</if>
+	</select>
+	
+		<!-- findPw -->
+	<select id="findPw" parameterType="hashMap"
+		resultType="MemberDto">
+	<![CDATA[
+	select id,pw,name,age,email,phone,address from member 
+	where 1=1
+	]]>
+	<if test="keyword!=null">
+				and (id like CONCAT(#{keyword}) and email like
+			CONCAT(#{keyword1}))
+		</if>
+	</select>
+</mapper>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN " "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="reservation">
+<resultMap id="roomResultMap" type="RoomDto" autoMapping="true">
+		<result property="room_no" column="room_no" />
+		<result property="type" column="type" />
+		<result property="base_price" column="base_price" />
+		<result property="add_price" column="add_price" />
+		<result property="base_person" column="base_person" />
+		<result property="max_person" column="max_person" />
+		<result property="imgLink" column="imgLink" />
+</resultMap>
+<!-- <resultMap id="rsvDetailMap" type="RsvDetailDto" autoMapping="true"> -->
+<!-- 		<result property="id" column="id" /> -->
+<!-- 		<result property="date_in" column="date_in" /> -->
+<!-- 		<result property="type" column="type" /> -->
+<!-- 		<result property="date_out" column="date_out" /> -->
+<!-- 		<result property="person" column="person" /> -->
+<!-- 		<result property="cash" column="cash" /> -->
+<!-- 		<result property="payment" column="payment" /> -->
+<!-- 		<result property="imgLink" column="imgLink" /> -->
+<!-- </resultMap> -->
+
+<resultMap id="myDetailMap" type="myRoomDetailDto" autoMapping="true">
+		<result property="rsv_idx" column="rsv_idx" />
+		<result property="id" column="id" />
+		<result property="room_no" column="room_no" />
+		<result property="type" column="type" />
+		<result property="date_in" column="date_in" />
+		<result property="date_out" column="date_out" />
+		<result property="payment" column="payment" />
+		<result property="cash" column="cash" />
+</resultMap>
+
+	<insert id="insert_reservation" parameterType="hashMap" useGeneratedKeys="true" keyProperty="rsv_idx">
+	<![CDATA[
+		insert into reservation(id, room_no, date_in, date_out, cash, person) values (#{id}, #{room_no}, #{date_in}, #{date_out}, #{price}, #{person})
+	]]>
+	</insert>
+	
+	<select id="rsv_detail" parameterType="hashMap" resultType="RsvDetailDto">
+	<![CDATA[
+		select id, date_in, type, date_out, person, cash, payment, imgLink from reservation rv join room ro on rv.room_no = ro.room_no where rsv_idx = ${rsv_idx}
+	]]>
+	</select>
+	
+	
+	
+	<select id="room_list" parameterType="hashMap" resultMap="roomResultMap">
+	<![CDATA[
+		select room_no, type, base_price, base_person, max_person, imgLink from room order by room_no asc
+	]]>
+	</select>
+	
+	<select id="checked_room" parameterType="hashMap" resultMap="roomResultMap">
+	<![CDATA[
+		select room_no, type, base_price, base_person, max_person, imgLink from room where room_no not in (select distinct ro.room_no from room ro join reservation rv on rv.room_no = ro.room_no 
+		where (date_in between #{date_in} and #{date_out}) or (date_out between #{date_in} and #{date_out}))
+	]]>
+	</select>
+	
+	<select id="my_rsv" parameterType="hashMap" resultMap="myDetailMap">
+	<![CDATA[
+		select rsv_idx, id, ro.room_no, type, date_in, date_out, payment, cash from reservation rv join room ro on rv.room_no=ro.room_no where id = #{id} order by date_in desc
+	]]>
+	</select>	
+	
+	<delete id="delete_rsv" parameterType="hashMap">
+	<![CDATA[
+		delete from reservation where rsv_idx = #{rsv_idx}
+	]]>
+	</delete>
+	<update id="pay_ok" parameterType="hashMap">
+	<![CDATA[
+		update reservation set payment = "결제완료" where rsv_idx = #{rsv_idx}
+	]]>
+	</update>
+<!-- 	<select id="DuplicateFind" resultType="int" parameterType="hashMap"> -->
+<!-- 	<![CDATA[ -->
+<!-- 		select count(*) from reservation where room_no = #{room_no} and (#{date_in} between date_in and date_out) or (#{date_out} between date_in and date_out); -->
+<!-- 	]]> -->
+<!-- 	</select> -->
+</mapper>

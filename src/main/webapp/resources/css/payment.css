@@ -1,0 +1,74 @@
+@charset "UTF-8";
+.content_wrap1 {
+	width: 1200px;
+	padding: 50px 0 50px 0;
+	margin: 0 auto;
+}
+.content_wrap1 h1{
+font-family: 'Nanum Myeongjo', serif;
+font-weight: 800;
+font-size: 25px;
+color: #856f56;
+padding-bottom: 24px;
+}
+.content_wrap1::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.content_wrap1 .table_rs {
+	width: 1200px;
+	text-align: center;
+	border-bottom: 1px solid lightgray;
+}
+
+.content_wrap1 .table_rs tr {
+	height: 30px;
+}
+
+.table_rs-wrap {
+	float: left;
+}
+
+.pay_count {
+	text-align: right;
+	margin-top: 20px;
+	margin-right: 20px;
+}
+.pay_count ul li input[type=radio]{
+cursor: pointer;
+width: 20px;
+height: 20px;
+color: #ea1f62;
+}
+
+.pay_count li {
+	margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pay_count button {
+	margin-top: 20px;
+	width: 135px;
+	height: 44px;
+	padding: 0 20px;
+	background: #7c6347;
+	color: #fff;
+	line-height: 27px;
+	text-align: center;
+	border: 0;
+	cursor: pointer;
+}

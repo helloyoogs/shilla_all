@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN " "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+
+<typeAliases>
+ 
+    <typeAlias alias="RoomDto" type="com.mycompany.myapp.DTO.RoomDto"/>
+    <typeAlias alias="RsvDetailDto" type="com.mycompany.myapp.DTO.RsvDetailDto"/>
+    <typeAlias alias="myRoomDetailDto" type="com.mycompany.myapp.DTO.myRoomDetailDto"/>
+    <typeAlias alias="MemberDto" type="com.mycompany.myapp.DTO.MemberDto"/>
+    <typeAlias alias="ReviewDto" type="com.mycompany.myapp.DTO.ReviewDto"/>
+    <typeAlias alias="BeforeReviewDto" type="com.mycompany.myapp.DTO.BeforeReviewDto"/>
+ 
+</typeAliases>
+
+</configuration>
